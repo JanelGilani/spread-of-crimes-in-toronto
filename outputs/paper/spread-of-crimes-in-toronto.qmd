@@ -1,24 +1,41 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
+title: "Do Income and Population Affect Crimes Committed in Neighbourhoods? An Analysis of the 2020 Toronto Crime Data"
+#subtitle: "NA"
 author: 
   - Janel Gilani
-thanks: "Code and data are available at: LINK."
+thanks: "Code and data are available at: https://github.com/JanelGilani/spread-of-crimes-in-toronto"
 date: today
 date-format: long
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
 format: pdf
+toc: true
 number-sections: true
 bibliography: references.bib
 ---
 
 ```{r}
+#| message: false
+#| echo: false
 #| include: false
 #| warning: false
-#| message: false
 
+#### Workspace set-up ####
+
+## Load packages
+library(knitr)
+library(kableExtra)
+library(here)
+library(ggplot2)
+library(ggbeeswarm)
+library(ggrepel)
 library(tidyverse)
-library(palmerpenguins)
+
+#### Read in cleaned data ####
+
+cleaned_crimes_data <- read_csv(file = here("outputs/data/crimes_cleaned_data.csv"), show_col_types = FALSE)
+cleaned_neighbourhood_data <- read_csv(file = here("outputs/data/neighbourhood_cleaned_data.csv"), show_col_types = FALSE)
+final_neighbourhood_data <- read_csv(file = here("outputs/data/hood_crime_analysis_data.csv"), show_col_types = FALSE)
+
 ```
 
 
@@ -26,11 +43,17 @@ library(palmerpenguins)
 
 You can and should cross-reference sections and sub-sections. 
 
-The remainder of this paper is structured as follows. @sec-data....
+The remainder of this paper is structured as follows. @sec-data, @sec-results, @sec-discussion, and @sec-conclusion.
 
 
 
 # Data {#sec-data}
+
+## Number of Crimes Committed in 2020 in Toronto Neighbourhoods
+
+## Neighbourhood Profiles, 2021 (158 Model)
+
+## Combining Crimes, Income and Population Data
 
 Some of our data is of penguins (@fig-bills), from @palmerpenguins.
 
@@ -38,6 +61,7 @@ Some of our data is of penguins (@fig-bills), from @palmerpenguins.
 #| label: fig-bills
 #| fig-cap: Bills of penguins
 #| echo: false
+#| eval: false
 
 ggplot(penguins, aes(x = island, fill = species)) +
   geom_bar(alpha = 0.8) +
@@ -56,6 +80,7 @@ And also planes (@fig-planes). (You can change the height and width, but don't w
 #| label: fig-planes
 #| fig-cap: Relationship between wing length and width
 #| echo: false
+#| eval: false
 #| warning: false
 #| message: false
 
@@ -71,26 +96,24 @@ analysis_data |>
 
 Talk way more about it. 
 
-# Results
+# Results {#sec-results}
 
-Our results are summarized in @tbl-modelresults.
+## Toronto Neighbourhoods Crimes Committed in 2020 Statistics
 
-```{r}
-#| echo: false
-#| eval: false
-#| warning: false
-#| message: false
+## Toronto Neighbourhood Profile Based on 2021 Census Data
 
-library(rstanarm)
+## Relationship Between Crimes Committed and Neighbourhood Population
 
-first_model <-
-  readRDS(file = here::here("outputs/models/first_model.rds"))
-```
+## Relationship Between Crimes Committed and Neighbourhood Income
+
+
+
 
 ```{r}
 #| echo: false
 #| eval: false
 #| label: tbl-modelresults
+#| include: false
 #| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
 #| warning: false
 
@@ -106,19 +129,9 @@ modelsummary::modelsummary(
 
 
 
-# Discussion
+# Discussion {#sec-discussion}
 
-## First discussion point {#sec-first-point}
-
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
-
-## Second discussion point
-
-## Third discussion point
-
-## Weaknesses and next steps
-
-Weaknesses and next steps should also be included.
+# Conclusion {#sec-conclusion}
 
 
 \newpage

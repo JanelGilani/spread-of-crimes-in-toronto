@@ -2,7 +2,7 @@
 
 ## Overview of Paper
 
-This paper analyzes the distribution of crime rates across Toronto. Specifically, it is looking at the relationship between the number of crimes, population, and income level for each neighbourhood.
+This paper analyzes the distribution of crime rates across Toronto. Specifically, it is looking at the relationship between the number of crimes, population, and income level across the 158 neighbourhoods of Toronto.
 
 ## File Structure
 

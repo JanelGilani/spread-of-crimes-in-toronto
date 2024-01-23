@@ -1,0 +1,159 @@
+neighbourhood,hood_id,number_of_crimes
+South Eglinton-Davisville,174,257
+North Toronto,173,167
+Dovercourt Village,172,207
+Junction-Wallace Emerson,171,442
+Yonge-Bay Corridor,170,797
+Bay-Cloverhill,169,230
+Bendale-Glen Andrew,156,256
+Downsview,155,283
+Oakdale-Beverley Heights,154,576
+Avondale,153,163
+East Willowdale,152,151
+Yonge-Doris,151,222
+Fenside-Parkwoods,150,193
+Parkwoods-O'Connor Hills,149,106
+East L'Amoreaux,148,169
+L'Amoreaux West,147,176
+Malvern East,146,305
+Malvern West,145,145
+Morningside Heights,144,230
+West Rouge,143,178
+Woburn North,142,366
+Golfdale-Cedarbrae-Woburn,141,317
+Guildwood,140,91
+Scarborough Village,139,330
+Eglinton East,138,324
+West Hill,136,584
+Morningside,135,184
+Highland Creek,134,98
+Centennial Scarborough,133,105
+Milliken,130,286
+Agincourt North,129,222
+Agincourt South-Malvern West,128,290
+Dorset Park,126,354
+Ionview,125,131
+Kennedy Park,124,328
+Cliffcrest,123,255
+Birchcliffe-Cliffside,122,294
+Downtown Yonge East,168,942
+Church-Wellesley,167,564
+St Lawrence-East Bayfront-The Islands,166,647
+Harbourfront-CityPlace,165,409
+Wellington Place,164,674
+Fort York-Liberty Village,163,238
+West Queen West,162,252
+Humber Bay Shores,161,186
+Mimico-Queensway,160,308
+Etobicoke City Centre,159,454
+Islington,158,234
+Bendale South,157,118
+Caledonia-Fairbank,109,95
+Briar Hill-Belgravia,108,208
+Oakwood Village,107,249
+Humewood-Cedarvale,106,171
+Lawrence Park North,105,142
+Lawrence Park South,103,163
+Forest Hill North,102,186
+Forest Hill South,101,145
+Yonge-Eglinton,100,204
+Mount Pleasant East,99,169
+Rosedale-Moore Park,98,357
+Yonge-St.Clair,97,84
+Casa Loma,96,148
+Annex,95,666
+Wychwood,94,188
+Corso Italia-Davenport,92,180
+Weston-Pelham Park,91,174
+Junction Area,90,229
+Oakridge,121,272
+Clairlea-Birchmount,120,407
+Wexford/Maryvale,119,438
+Tam O'Shanter-Sullivan,118,268
+Steeles,116,98
+Mount Dennis,115,162
+Lambton Baby Point,114,71
+Weston,113,425
+Beechborough-Greenbrook,112,90
+Rockcliffe-Smythe,111,280
+Keelesdale-Eglinton West,110,160
+Palmerston-Little Italy,80,205
+University,79,222
+Kensington-Chinatown,78,817
+North St.James Town,74,430
+Moss Park,73,1228
+Regent Park,72,252
+Cabbagetown-South St.James Town,71,281
+South Riverdale,70,566
+Blake-Jones,69,123
+North Riverdale,68,139
+Playter Estates-Danforth,67,154
+Danforth,66,185
+Greenwood-Coxwell,65,334
+Woodbine Corridor,64,179
+The Beaches,63,236
+East End-Danforth,62,364
+Taylor-Massey,61,237
+Woodbine-Lumsden,60,87
+Danforth East York,59,170
+Old East York,58,82
+Runnymede-Bloor West Village,89,82
+High Park North,88,232
+High Park-Swansea,87,210
+Roncesvalles,86,249
+South Parkdale,85,395
+Little Portugal,84,244
+Dufferin Grove,83,216
+Trinity-Bellwoods,81,260
+Don Valley Village,47,227
+Pleasant View,46,137
+Flemingdon Park,44,205
+Victoria Village,43,196
+Banbury-Don Mills,42,200
+Bridle Path-Sunnybrook-York Mills,41,130
+St.Andrew-Windfields,40,169
+Bedford Park-Nortown,39,281
+Lansing-Westgate,38,259
+Willowdale West,37,248
+Newtonbrook West,36,392
+Westminster-Branson,35,250
+Bathurst Manor,34,190
+Clanton Park,33,237
+Englemount-Lawrence,32,277
+Yorkdale-Glen Park,31,480
+Brookhaven-Amesbury,30,239
+Maple Leaf,29,84
+Rustic,28,140
+York University Heights,27,937
+Glenfield-Jane Heights,25,663
+Broadview North,57,145
+Leaside-Bennington,56,177
+Thorncliffe Park,55,179
+O'Connor-Parkview,54,248
+Henry Farm,53,175
+Bayview Village,52,236
+Newtonbrook East,50,172
+Bayview Woods-Steeles,49,90
+Hillcrest Village,48,125
+Alderwood,20,137
+Long Branch,19,164
+New Toronto,18,184
+Stonegate-Queensway,16,294
+Kingsway South,15,61
+Etobicoke West Mall,13,127
+Markland Wood,12,112
+Eringate-Centennial-West Deane,11,160
+Princess-Rosethorn,10,96
+Edenbridge-Humber Valley,9,112
+Humber Heights-Westmount,8,86
+Willowridge-Martingrove-Richview,7,236
+Kingsview Village-The Westway,6,246
+Elms-Old Rexdale,5,137
+Rexdale-Kipling,4,148
+Thistletown-Beaumond Heights,3,169
+Mount Olive-Silverstone-Jamestown,2,460
+West Humber-Clairville,1,1175
+Black Creek,24,489
+Pelmo Park-Humberlea,23,188
+Humbermede,22,266
+Humber Summit,21,347

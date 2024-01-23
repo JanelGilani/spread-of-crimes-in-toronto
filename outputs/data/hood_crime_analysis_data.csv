@@ -1,0 +1,159 @@
+neighbourhood,hood_id,number_of_crimes,population,income
+South Eglinton-Davisville,174,257,22735,103500
+North Toronto,173,167,15885,85400
+Dovercourt Village,172,207,12380,111500
+Junction-Wallace Emerson,171,442,23180,103700
+Yonge-Bay Corridor,170,797,12645,99800
+Bay-Cloverhill,169,230,16670,94000
+Bendale-Glen Andrew,156,256,18685,86400
+Downsview,155,283,17970,97600
+Oakdale-Beverley Heights,154,576,21420,89600
+Avondale,153,163,13790,102700
+East Willowdale,152,151,15485,136600
+Yonge-Doris,151,222,20160,88300
+Fenside-Parkwoods,150,193,20510,93600
+Parkwoods-O'Connor Hills,149,106,13965,131200
+East L'Amoreaux,148,169,21495,96700
+L'Amoreaux West,147,176,21545,92300
+Malvern East,146,305,26095,97700
+Malvern West,145,145,17320,99000
+Morningside Heights,144,230,24940,127000
+West Rouge,143,178,20670,131200
+Woburn North,142,366,26580,86500
+Golfdale-Cedarbrae-Woburn,141,317,27085,90500
+Guildwood,140,91,9680,121800
+Scarborough Village,139,330,16520,88700
+Eglinton East,138,324,22535,85300
+West Hill,136,584,28140,90200
+Morningside,135,184,17660,98200
+Highland Creek,134,98,12625,135000
+Centennial Scarborough,133,105,13380,155000
+Milliken,130,286,23980,95000
+Agincourt North,129,222,27540,97100
+Agincourt South-Malvern West,128,290,24170,93600
+Dorset Park,126,354,24305,89700
+Ionview,125,131,13365,85200
+Kennedy Park,124,328,17110,83200
+Cliffcrest,123,255,16130,117800
+Birchcliffe-Cliffside,122,294,22700,131400
+Downtown Yonge East,168,942,17700,96300
+Church-Wellesley,167,564,22320,79300
+St Lawrence-East Bayfront-The Islands,166,647,31285,118600
+Harbourfront-CityPlace,165,409,28135,110200
+Wellington Place,164,674,25570,124500
+Fort York-Liberty Village,163,238,19915,112300
+West Queen West,162,252,13170,136400
+Humber Bay Shores,161,186,22605,110700
+Mimico-Queensway,160,308,17045,111800
+Etobicoke City Centre,159,454,23600,97400
+Islington,158,234,23460,147800
+Bendale South,157,118,10725,105100
+Caledonia-Fairbank,109,95,10015,102500
+Briar Hill-Belgravia,108,208,14575,96800
+Oakwood Village,107,249,20710,102500
+Humewood-Cedarvale,106,171,13845,146200
+Lawrence Park North,105,142,14675,268400
+Lawrence Park South,103,163,14960,365600
+Forest Hill North,102,186,12290,170200
+Forest Hill South,101,145,10860,284400
+Yonge-Eglinton,100,204,12410,167000
+Mount Pleasant East,99,169,16370,184200
+Rosedale-Moore Park,98,357,20080,334000
+Yonge-St.Clair,97,84,12905,204800
+Casa Loma,96,148,11350,270400
+Annex,95,666,29300,184000
+Wychwood,94,188,12800,129800
+Corso Italia-Davenport,92,180,13200,117300
+Weston-Pelham Park,91,174,10680,94700
+Junction Area,90,229,14010,119300
+Oakridge,121,272,13705,72200
+Clairlea-Birchmount,120,407,26840,104500
+Wexford/Maryvale,119,438,28345,98700
+Tam O'Shanter-Sullivan,118,268,27205,93000
+Steeles,116,98,22765,95700
+Mount Dennis,115,162,13055,81700
+Lambton Baby Point,114,71,7965,165600
+Weston,113,425,18675,80500
+Beechborough-Greenbrook,112,90,6260,79500
+Rockcliffe-Smythe,111,280,22235,87300
+Keelesdale-Eglinton West,110,160,11390,92300
+Palmerston-Little Italy,80,205,13120,131800
+University,79,222,6435,130200
+Kensington-Chinatown,78,817,18120,91600
+North St.James Town,74,430,18535,74100
+Moss Park,73,1228,21490,96800
+Regent Park,72,252,12750,83400
+Cabbagetown-South St.James Town,71,281,11020,120000
+South Riverdale,70,566,27815,135400
+Blake-Jones,69,123,7475,120500
+North Riverdale,68,139,11290,173200
+Playter Estates-Danforth,67,154,7680,147400
+Danforth,66,185,9305,137600
+Greenwood-Coxwell,65,334,14120,119100
+Woodbine Corridor,64,179,12205,131000
+The Beaches,63,236,21510,197200
+East End-Danforth,62,364,21840,121700
+Taylor-Massey,61,237,15025,79100
+Woodbine-Lumsden,60,87,7915,116500
+Danforth East York,59,170,17065,130400
+Old East York,58,82,9160,126700
+Runnymede-Bloor West Village,89,82,10120,179000
+High Park North,88,232,21855,118400
+High Park-Swansea,87,210,22665,160600
+Roncesvalles,86,249,14610,124000
+South Parkdale,85,395,20495,76300
+Little Portugal,84,244,15485,110900
+Dufferin Grove,83,216,11215,100600
+Trinity-Bellwoods,81,260,15415,133000
+Don Valley Village,47,227,26775,99100
+Pleasant View,46,137,15220,106300
+Flemingdon Park,44,205,22530,79700
+Victoria Village,43,196,17365,84900
+Banbury-Don Mills,42,200,27155,144600
+Bridle Path-Sunnybrook-York Mills,41,130,8940,519500
+St.Andrew-Windfields,40,169,16960,220600
+Bedford Park-Nortown,39,281,22145,266000
+Lansing-Westgate,38,259,15910,152400
+Willowdale West,37,248,17160,105700
+Newtonbrook West,36,392,23805,95300
+Westminster-Branson,35,250,25705,92800
+Bathurst Manor,34,190,15955,116800
+Clanton Park,33,237,17620,124500
+Englemount-Lawrence,32,277,21285,125200
+Yorkdale-Glen Park,31,480,16625,95700
+Brookhaven-Amesbury,30,239,17495,89400
+Maple Leaf,29,84,9845,105700
+Rustic,28,140,9390,83500
+York University Heights,27,937,28255,87500
+Glenfield-Jane Heights,25,663,30020,84200
+Broadview North,57,145,10955,93900
+Leaside-Bennington,56,177,16535,284400
+Thorncliffe Park,55,179,20400,76600
+O'Connor-Parkview,54,248,18405,105500
+Henry Farm,53,175,19840,91100
+Bayview Village,52,236,22330,107700
+Newtonbrook East,50,172,15345,109400
+Bayview Woods-Steeles,49,90,12085,122600
+Hillcrest Village,48,125,16345,105900
+Alderwood,20,137,12595,129000
+Long Branch,19,164,11360,109100
+New Toronto,18,184,11345,92700
+Stonegate-Queensway,16,294,25650,154600
+Kingsway South,15,61,8855,316000
+Etobicoke West Mall,13,127,11865,97900
+Markland Wood,12,112,10365,148600
+Eringate-Centennial-West Deane,11,160,18450,127400
+Princess-Rosethorn,10,96,11170,235600
+Edenbridge-Humber Valley,9,112,15190,197600
+Humber Heights-Westmount,8,86,10005,123100
+Willowridge-Martingrove-Richview,7,236,22445,113400
+Kingsview Village-The Westway,6,246,22005,99400
+Elms-Old Rexdale,5,137,9355,94600
+Rexdale-Kipling,4,148,10375,90000
+Thistletown-Beaumond Heights,3,169,9850,101300
+Mount Olive-Silverstone-Jamestown,2,460,31345,86200
+West Humber-Clairville,1,1175,33300,104500
+Black Creek,24,489,21145,74700
+Pelmo Park-Humberlea,23,188,11290,114200
+Humbermede,22,266,16955,88400
+Humber Summit,21,347,12185,94900

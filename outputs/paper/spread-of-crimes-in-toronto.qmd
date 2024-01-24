@@ -1,6 +1,6 @@
 ---
 title: "Do Income and Population Affect Crimes Committed in Neighbourhoods? An Analysis of the 2020 Toronto Crime Data"
-#subtitle: "NA"
+subtitle: "There is strong evidence of income and population being correlated with the number of crimes committed in Toronto neighbourhoods."
 author: 
   - Janel Gilani
 thanks: "Code and data are available at: https://github.com/JanelGilani/spread-of-crimes-in-toronto"
@@ -16,127 +16,166 @@ bibliography: references.bib
 ```{r}
 #| message: false
 #| echo: false
-#| include: false
-#| warning: false
 
 #### Workspace set-up ####
 
 ## Load packages
-library(knitr)
+library(tidyverse) # a collection of data-related packages
+library(knitr) # for kable
 library(kableExtra)
 library(here)
-library(ggplot2)
 library(ggbeeswarm)
-library(ggrepel)
-library(tidyverse)
 
 #### Read in cleaned data ####
 
 cleaned_crimes_data <- read_csv(file = here("outputs/data/crimes_cleaned_data.csv"), show_col_types = FALSE)
 cleaned_neighbourhood_data <- read_csv(file = here("outputs/data/neighbourhood_cleaned_data.csv"), show_col_types = FALSE)
 final_neighbourhood_data <- read_csv(file = here("outputs/data/hood_crime_analysis_data.csv"), show_col_types = FALSE)
-
 ```
 
 
 # Introduction
 
-You can and should cross-reference sections and sub-sections. 
+You can and should cross-reference sections and sub-sections.
 
 The remainder of this paper is structured as follows. @sec-data, @sec-results, @sec-discussion, and @sec-conclusion.
-
-
 
 # Data {#sec-data}
 
 ## Number of Crimes Committed in 2020 in Toronto Neighbourhoods
 
+```{r}
+#| echo: false
+#| message: false
+#| label: tbl-cleaned-crimes-data
+#| tbl-cap: Sample of Cleaned 2020 Toronto Neighbourhoods Crime Data
+
+#referenced kable stying from https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/outputs/paper/covid_clinics.qmd
+head(cleaned_crimes_data, 5) |>
+  kable(
+    col.names = c("Neighbourhood Name", "Hood ID", "Number of Crimes Committed"),
+    booktabs = TRUE
+  )
+
+```
+
+
 ## Neighbourhood Profiles, 2021 (158 Model)
+
+```{r}
+#| echo: false
+#| message: false
+#| label: tbl-cleaned-neihbourhood-profile-data
+#| tbl-cap: Sample of Cleaned 2020 Toronto Neighbourhood Profile Data
+
+head(cleaned_neighbourhood_data, 5) |>
+  kable(
+    col.names = c("Hood ID", "Popluation", "Income"),
+    booktabs = TRUE
+  )
+```
+
 
 ## Combining Crimes, Income and Population Data
 
-Some of our data is of penguins (@fig-bills), from @palmerpenguins.
-
 ```{r}
-#| label: fig-bills
-#| fig-cap: Bills of penguins
 #| echo: false
-#| eval: false
-
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
-```
-
-Talk more about it.
-
-And also planes (@fig-planes). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)
-
-```{r}
-#| label: fig-planes
-#| fig-cap: Relationship between wing length and width
-#| echo: false
-#| eval: false
-#| warning: false
 #| message: false
+#| label: tbl-summarized-neighbourhood-profiles
+#| tbl-cap: Sample of Combined Toronto Neighbourhood Crime, Income and Population Data
 
-analysis_data <- read_csv(here::here("outputs/data/analysis_data.csv"))
-
-analysis_data |> 
-  ggplot(aes(x = width, y = length)) +
-  geom_point(alpha = 0.8) +
-  theme_minimal() +
-  labs(x = "Wing width (mm)",
-       y = "Wing length (mm)")
+head(final_neighbourhood_data, 10) |>
+  arrange (hood_id) |>
+  relocate(any_of(c("hood_id", "neighbourhood", "number_of_crimes", "population", "income"))) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Hood ID", "Neighbourhood Name", "Number of Crimes", "Population", "Income"),
+    align = c("c", "l", "c", "c", "c")
+        )
 ```
 
-Talk way more about it. 
 
 # Results {#sec-results}
 
 ## Toronto Neighbourhoods Crimes Committed in 2020 Statistics
 
+```{r}
+#| message: false
+#| echo: false
+#| label: fig-crimes-committed
+#| fig-cap: Number of Crimes Committed in Toronto Neighbourhoods
+#| fig-width: 25
+#| fig-height: 8
+
+cleaned_crimes_data %>%
+  ggplot(mapping = aes(x = factor(hood_id), y = number_of_crimes)) +
+  geom_bar(stat = "identity", fill = "skyblue", color = "black") +
+  labs(
+    title = "Number of Crimes Committed in Toronto Neighbourhoods",
+    x = "Neighbourhood ID",
+    y = "Number of Crimes Committed"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, size = 12),  # Adjust the font size of x-axis labels
+        plot.title = element_text(size = 35, hjust = 0.5),  # Adjust the title font size
+        axis.title = element_text(size = 24))   # Adjust the axis title font size
+```
+
 ## Toronto Neighbourhood Profile Based on 2021 Census Data
 
 ## Relationship Between Crimes Committed and Neighbourhood Population
 
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-compare-crimes-population
+#| fig-cap: "Correlations between Number of Crimes and Population"
+
+final_neighbourhood_data |>
+  ggplot(aes(x = population, y = number_of_crimes)) + 
+  geom_point() +
+  geom_beeswarm() +
+  geom_smooth(method=lm, se=FALSE) + 
+  labs(
+    title = "Number of Crimes vs. Population for Toronto Neighbourhoods",
+    x = "Population",
+    y = "Number of Crimes"
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5)) 
+
+```
+
 ## Relationship Between Crimes Committed and Neighbourhood Income
-
-
-
 
 ```{r}
 #| echo: false
-#| eval: false
-#| label: tbl-modelresults
-#| include: false
-#| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
+#| message: false
 #| warning: false
+#| label: fig-compare-crimes-income
+#| fig-cap: "Correlations between Number of Crimes and Income"
 
-modelsummary::modelsummary(
-  list(
-    "First model" = first_model
-  ),
-  statistic = "mad",
-  fmt = 2
-)
+final_neighbourhood_data |>
+  ggplot(aes(x = income, y = number_of_crimes)) + 
+  geom_point() +
+  geom_beeswarm() +
+  geom_smooth(method=lm, se=FALSE) + 
+  labs(
+    title = "Number of Crimes vs. Income for Toronto Neighbourhoods",
+    x = "Income",
+    y = "Number of Crimes"
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  scale_x_continuous(labels = scales::comma_format()) 
+
 ```
-
-
-
 
 # Discussion {#sec-discussion}
 
 # Conclusion {#sec-conclusion}
 
-
 \newpage
 
-
 # References
-
-

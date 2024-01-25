@@ -332,6 +332,7 @@ The relationship between crimes committed and neighbourhood population in Toront
 #| warning: false
 #| label: fig-compare-crimes-population
 #| fig-cap: "Correlation between Number of Crimes and Population"
+#| fig-pos: "h"
 
 correlation_coefficient <- cor(final_neighbourhood_data$population, final_neighbourhood_data$number_of_crimes)
 
@@ -363,6 +364,7 @@ The statistical exploration of the relationship between crimes committed and nei
 #| warning: false
 #| label: fig-compare-crimes-income
 #| fig-cap: "Correlation between Number of Crimes and Income"
+#| fig-pos: "h"
 
 correlation_coefficient_income <- cor(final_neighbourhood_data$income, final_neighbourhood_data$number_of_crimes)
 
@@ -389,7 +391,23 @@ final_neighbourhood_data |>
 
 # Discussion {#sec-discussion}
 
+In this paper, an in-depth analysis of Toronto neighbourhoods in 2020 revealed insightful patterns regarding the relationships between crime rates, household income, and population. Through the integration of crime data, neighbourhood profiles, and census information, a comprehensive understanding of the socio-economic factors influencing crime emerged. The exploration aimed to shed light on the intricate dynamics that shape the safety landscapes of diverse communities.
+
+One key takeaway from this study is the identification of significant correlations between crime rates and both population and income levels. The positive correlation between population and crime suggests that more densely populated neighbourhoods tend to experience higher crime rates. Conversely, the weak negative correlation between income and crime implies that areas with higher household incomes generally exhibit lower crime rates. These findings underscore the influence of socio-economic factors on crime dynamics, contributing valuable insights for policymakers and urban planners.
+
+The causes for these correlations are multifaceted, reflecting the complex nature of crime in urban settings. For example, the positive correlation between population and crime may be attributed to the increased likelihood of criminal activity in densely populated areas. The presence of more people may provide a sense of anonymity, prompting individuals to engage in criminal activities [@demographicPatterns]. Additionally, the increased population may contribute to a higher incidence of crimes such as theft and assault. Conversely, the negative correlation between income and crime may be explained by the increased likelihood of criminal activity in areas with lower household incomes. The lack of economic opportunities may drive individuals to engage in criminal activities, contributing to higher crime rates [@crimeIncomeRelationship]. Additionally, the presence of more affluent communities may deter criminal activity, contributing to lower crime rates.
+
+Another important observation is the existence of disparities among Toronto neighbourhoods. The summary statistics highlighted distinct neighbourhoods with exceptionally high or low crime rates, providing a nuanced view of the city's safety dynamics. Neighbourhoods like Moss Park and West Humber-Clairville, with high crime rates, and Bridle Path-Sunnybrook-York Mills, with a high household income, exemplify the diversity in Toronto's socio-economic landscape. Understanding these disparities is crucial for formulating targeted interventions that address the unique challenges faced by different communities.
+
+While this study offers valuable insights into the crime landscape of Toronto, it is essential to acknowledge potential limitations. The dataset used for this analysis is derived from the Toronto Police Services, which may be subject to racial bias. Previous studies have highlighted the disproportionate impact of policing on racialized communities, particularly Black and Indigenous populations [@censusErrors]. Skogan's seminal work in 1977 emphasizes the existence of unreported crimes, with studies indicating that about two-thirds of Canadians experience criminal incidents that go unreported to the police [@skogan]. This underreporting is particularly pronounced in less severe offenses such as petty theft but extends to more serious crimes like sexual assault, where an alarming 83% of incidents were not reported to the police in 2014. Factors influencing non-reporting include the victim's relationship with the perpetrator, fear of retaliation, and concerns about credibility. Hate crimes, too, are believed to be substantially underreported, often due to strained relationships between marginalized groups and law enforcement, resulting in a lack of confidence in reporting. The consequence of underreporting is a dataset that does not fully capture the true extent of crime and victimization in the city. The characteristics of those who choose to report crimes may systematically differ from those who do not, introducing potential confounds and challenging the accuracy of crime rates, clearance rates, and the equitable allocation of police resources.
+
+
+Acknowledging these limitations underscores the importance of interpreting our findings within a broader socio-economic and cultural context. Additionally, the dataset does not include information on the specific types of crimes committed, which may have provided a more nuanced understanding of crime dynamics. Future research could explore the relationship between crime rates and specific crime categories, such as assault, homicide, and theft. This would enable a more granular analysis of crime patterns, contributing to a more comprehensive understanding of the safety landscape in Toronto.
+
+
 # Conclusion {#sec-conclusion}
+
+This paper delves into the intricate interplay of crime rates, household income, and population across 158 Toronto neighbourhoods in the year 2020. By integrating crime data, neighbourhood profiles, and census information, our analysis unveils significant correlations that offer nuanced insights into the socio-economic dynamics influencing safety and security. The study reveals a positive correlation between population density and crime rates, indicating that more densely populated neighbourhoods tend to experience higher crime rates. Conversely, a weak negative correlation between household income and crime suggests that areas with higher incomes generally exhibit lower crime rates. The examination of disparities among neighbourhoods, exemplified by areas like Moss Park with high crime rates and West Humber-Clairville with both high crime rates and population, underscores the diversity within Toronto's socio-economic landscape. While these findings contribute to our understanding, it is crucial to acknowledge the limitations, such as the absence of causation establishment and the impact of external factors. Future research directions may include longitudinal analyses and the exploration of specific crime types or demographic characteristics for a more comprehensive understanding of the socio-economic determinants of crime in Toronto.
 
 \newpage
 

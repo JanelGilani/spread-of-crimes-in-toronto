@@ -1,13 +1,16 @@
 ---
-title: "Do Income and Population Affect Crimes Committed in Neighbourhoods? An Analysis of the 2020 Toronto Crime Data"
-subtitle: "There is strong evidence of income and population being correlated with the number of crimes committed in Toronto neighbourhoods."
+title: "Strong Evidence of Income and Population being Correlated with Crimes Committed in Toronto Neighbourhoods in 2020"
 author: 
   - Janel Gilani
 thanks: "Code and data are available at: https://github.com/JanelGilani/spread-of-crimes-in-toronto"
 date: today
 date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
-format: pdf
+abstract: "This study examines the crime landscape in Toronto during the year 2020, focusing on the relationship between crime rates, income levels, and population figures across neighborhoods using a comprehensive dataset from Open Data Toronto. Our findings reveal an inverse correlation between crime rates and income, indicating that neighborhoods with lower income levels tend to experience higher crime rates. Additionally, a positive correlation emerged between population size and crime rates, suggesting that as the population increases, so does the incidence of crime in Toronto. These insights are crucial for informing targeted policies, enhancing law enforcement strategies, and developing community initiatives to address crime and socio-economic disparities in urban settings."
+format: 
+  pdf:
+    tbl-pos: "h"
+    fig-pos: "h"
+    
 toc: true
 number-sections: true
 bibliography: references.bib
@@ -36,19 +39,31 @@ final_neighbourhood_data <- read_csv(file = here("outputs/data/hood_crime_analys
 
 # Introduction
 
-You can and should cross-reference sections and sub-sections.
+Toronto, once hailed for its safety, confronts a contemporary challenge as crime rates in its neighborhoods become a growing concern. Despite the overall crime rates across Canada witnessing a commendable 30% decrease in the past two decades [@torontoStats], Toronto has experienced an unsettling rise in criminal activities. This paper embarks on a comprehensive statistical analysis of crime in Toronto neighborhoods throughout the year 2020, delving into the intricate relationship between crime rates, income levels, and population figures.
 
-The remainder of this paper is structured as follows. @sec-data, @sec-results, @sec-discussion, and @sec-conclusion.
+The global context of the COVID-19 pandemic in 2020 adds a layer of complexity to the study, prompting an exploration of how crime dynamics unfolded during these unprecedented times. The dataset used for this analysis is meticulously sourced from opendatatoronto [@rOpenDataToronto], providing a granular account of various crimes committed across Toronto's diverse neighborhoods. Utilizing robust statistical tools, particularly R [@citeR], our investigation seeks to unearth nuanced patterns and relationships within the data. It is crucial to note that the emphasis of this study lies in analyzing crimes in general, rather than focusing on a specific crime category.
+
+Preliminary findings allude to the possibility that crime rates in Toronto may deviate from the national trend, warranting a more profound exploration into the intricate dynamics of criminal activities. Acknowledging potential limitations within the dataset, including the influence of racial bias as evidenced in previous studies on crime in Toronto [@censusErrors], underscores the importance of interpreting our findings within a broader socio-economic and cultural context. Understanding these complexities becomes imperative for informed policymaking, strategic law enforcement, and the development of community engagement initiatives.
+
+Beyond statistical analysis, this research delves into the social fabric of Toronto's neighborhoods, offering critical insights into the challenges and opportunities for intervention. @sec-data: Data of the paper will meticulously explore the dataset's characteristics, employing a variety of tables and figures to construct a comprehensive narrative around crime occurrences in Toronto during 2020. @sec-results: Results will delve into the intricate relationships between crime rates, income levels, and population figures, shedding light on correlations and patterns that emerge from the data. It was found that crimes and income are inversely correlated, indicating that as income levels decrease, crime rates tend to increase. Furthermore, there is a positive correlation between population size and crime rates, suggesting that as the population increases, so does the incidence of crime. @sec-discussion: Discussion will intricately discuss the implications of these findings within the broader socio-economic context of crime in Toronto, addressing the multifaceted nature of these influences. Finally, the paper will conclude in @sec-conclusion: Conclusion, summarizing key discoveries and proposing avenues for future research in understanding and addressing the complex dynamics of crime in Toronto's neighborhoods.
 
 # Data {#sec-data}
 
+This paper utilises datasets retrieved from Open Data Toronto Portal through the library `opendatatoronto` [@rOpenDataToronto]. Two different data sources were leveraged to analyze the relationship of crimes committed across Toronto with income and population: `Neighbourhood Crime Rates` [@torontoCrimes] for crime data and `Neighbourhood Profiles, 2021 (158 Model)` [@torontoNeighbourhoods] for relevant neighbourhood information. Data was simulated, cleaned , tested and analyzed using the open source statistically programming language R [@citeR], using functionalities from `tidyverse` [@rTidyverse], `ggplot2` [@rGgplot2], `dplyr` [@rDplyr], `readr` [@rReadr], `tibble` [@rTibble], `janitor` [@rJanitor], `kableExtra` [@rKableExtra] and `knitr` [@rKnitr]. Details and examination of the dataset context, variables creation and extraction processes are discussed in the subsections below.
+
+
 ## Number of Crimes Committed in 2020 in Toronto Neighbourhoods
+
+To comprehensively explore crime dynamics in Toronto during the year 2020, the Neighbourhood Crime Rates dataset from the Toronto Open Data portal served as a foundational resource [@rOpenDataToronto]. This dataset, compiled by the Toronto Police Services and last updated on January 11, 2024, encompasses 158 neighborhoods within the Greater Toronto Area. It provides essential information, including the count of various crime types recorded annually between 2014 and  2023 (e.g., Homicide_2020). The crime categories include assault, auto theft, breaking and entering, homicide, robbery, and theft over. However, we only focus on relevant crime data for 2020. The sum of all these crimes committed in 2020 is also included in the cleaned data as the total number of crimes committed in each neighborhood, named `number_of_crimes`.
+
+To ensure a focused examination, the dataset was refined to include specific variables, such as the neighborhood IDs (variable named `hood_id`), neighborhood names (variable named `neighbourhood`), and the total number of crimes for each neighborhood (variable named `number_of_crimes`) in 2020 (see @tbl-cleaned-crimes-data). This focused approach aimed to elucidate the crime landscape within the selected timeframe. Additionally, considerations were made to enhance data visualization by incorporating neighborhood IDs for readability on plot axes. While the raw data included average per crime and crime rate variables, a decision was made to prioritize a total count of all crimes. This strategic choice facilitates a more comprehensive assessment, offering a holistic perspective on crime in Toronto neighborhoods during the specified year.
 
 ```{r}
 #| echo: false
 #| message: false
 #| label: tbl-cleaned-crimes-data
 #| tbl-cap: Sample of Cleaned 2020 Toronto Neighbourhoods Crime Data
+#| tbl-pos: "h"
 
 #referenced kable stying from https://github.com/christina-wei/INF3104-1-Covid-Clinics/blob/main/outputs/paper/covid_clinics.qmd
 head(cleaned_crimes_data, 5) |>
@@ -62,11 +77,16 @@ head(cleaned_crimes_data, 5) |>
 
 ## Neighbourhood Profiles, 2021 (158 Model)
 
+To capture a comprehensive snapshot of the demographic, social, and economic characteristics of Toronto's neighborhoods, the City of Toronto Neighbourhood Profiles derived from the 2021 Census of Population played a pivotal role in our analysis. Conducted every five years, the Census collects a wide array of data, including age, sex, families, households, language, immigration, ethnocultural diversity, aboriginal peoples, housing, education, income, and labor. For our study, the Neighbourhood Profiles provided essential insights, offering a nuanced understanding of the people and households within each of the 158 neighborhoods in the City of Toronto.
+
+The dataset is downloadable as a Microsoft Excel file and the `hd2021_census_profile` tab within the dataset was utilized to extract pertinent information for the purpose of this paper. Raw data can transposed and cleaned to extract relevant information such as population (variable named `population`) and average total household income (variable named `income`) for each neighbourhood, identified by variable named `hood_id` in 2020 (see @tbl-cleaned-neighbourhood-profile-data). This information is pivotal in elucidating the economic and demographic landscape of Toronto's neighborhoods, providing a valuable complement to the crime data derived from the Neighbourhood Crime Rates dataset.
+
 ```{r}
 #| echo: false
 #| message: false
-#| label: tbl-cleaned-neihbourhood-profile-data
+#| label: tbl-cleaned-neighbourhood-profile-data
 #| tbl-cap: Sample of Cleaned 2020 Toronto Neighbourhood Profile Data
+#| tbl-pos: "h"
 
 head(cleaned_neighbourhood_data, 5) |>
   kable(
@@ -78,11 +98,19 @@ head(cleaned_neighbourhood_data, 5) |>
 
 ## Combining Crimes, Income and Population Data
 
+By employing the merge function, we have seamlessly combined cleaned `Neighbourhood Crime Rates` data with cleaned `Toronto Neighbourhood Profiles` data , creating a unified dataset featuring variables including `hood_id`, `neighbourhood`, `number_of_crimes`, `population`, and `income`. 
+
+As illustrated in @tbl-summarized-neighbourhood-profiles, our combined dataset comprises several key variables, each providing crucial insights into the socio-economic and crime landscape of Toronto's neighborhoods. The `hood_id` variable serves as a unique identifier for each neighborhood, facilitating a granular examination of the data. The `neighbourhood` variable delineates the specific neighborhood associated with each observation, enhancing the geographical context. `number_of_crimes` is a numerical variable that quantifies the incidence of crimes within each neighborhood, offering a quantitative measure of criminal activity. Furthermore, `population` and `income` variables contribute additional dimensions to our analysis, shedding light on the demographic and economic characteristics of the neighborhoods. 
+
+These variables collectively enable a comprehensive exploration of the relationships between crime rates, population, and income in Toronto during the year 2020. For example, the first observation in @tbl-summarized-neighbourhood-profiles indicates that the neighborhood with ID 153, named Avondale, experienced 163 crimes in 2020. Additionally, the population of this neighborhood in 2020 was 13,790, and the average total household income was $102,700. These data points can be analyzed together in order to tell us a compelling story about the relationship between crimes, income and population across Toronto neighbourhoods.
+
+
 ```{r}
 #| echo: false
 #| message: false
 #| label: tbl-summarized-neighbourhood-profiles
 #| tbl-cap: Sample of Combined Toronto Neighbourhood Crime, Income and Population Data
+#| tbl-pos: "h"
 
 head(final_neighbourhood_data, 10) |>
   arrange (hood_id) |>
@@ -98,6 +126,66 @@ head(final_neighbourhood_data, 10) |>
 # Results {#sec-results}
 
 ## Toronto Neighbourhoods Crimes Committed in 2020 Statistics
+
+In the year 2020, the City of Toronto witnessed a total of 42,328 crimes, reflecting the complex dynamics of urban safety. On average, approximately 267 crimes were committed per neighbourhood, demonstrating the variability in crime rates across Toronto's diverse communities. The relatively high standard deviation of 193 emphasizes the dispersion of crime occurrences, highlighting the diverse safety landscapes within the city. Neighbourhoods experiencing the highest number of crimes were Moss Park (Neighbourhood 73) with 1228 incidents, West Humber-Clairville (Neighbourhood 1) with 1175, and Downtown Yonge East (Neighbourhood 168) with 942 crimes. These areas grapple with distinct challenges, contributing to elevated crime rates. Conversely, neighbourhoods with the lowest crime rates include Kingsway South (Neighbourhood 15) with 61 incidents, Lambton Baby Point (Neighbourhood 114) with 71, and Runnymede-Bloor West Village (Neighbourhood 89) with 82 crimes. These insights (see @fig-crimes-committed) underscore the heterogeneous nature of crime distribution in Toronto, prompting a nuanced exploration of contributing factors and the need for targeted interventions to enhance community safety.
+
+```{r}
+#| include: false
+#| eval: false
+### Summary Statistics of Neighbourhood Crimes ###
+crimes_stats <- cleaned_crimes_data %>%
+  as_tibble() %>%
+  select(hood_id, number_of_crimes) %>%
+  summarize(
+    min = min(number_of_crimes),
+    max = max(number_of_crimes),
+    mean = mean(number_of_crimes),
+    std_dev = sd(number_of_crimes)) %>%
+  arrange(desc(mean))
+
+head(crimes_stats, 5) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Minimum", "Maximum", "Mean", "Standard Deviation"),
+    align = c("c", "c", "c", "c")
+  )
+```
+
+```{r}
+#| include: false
+#| eval: false
+### Summary Statistics of Neighbourhood Crimes ###
+crimes_stats <- cleaned_crimes_data %>%
+  as_tibble() %>%
+  select(hood_id, neighbourhood, number_of_crimes) %>%
+  group_by(hood_id, neighbourhood) %>%
+  summarize(
+    total_crimes = sum(number_of_crimes)
+  ) %>%
+  arrange(desc(total_crimes))
+
+# Three neighbourhoods with the highest number of crimes
+top_three <- head(crimes_stats, 3)
+
+# Three neighbourhoods with the lowest number of crimes
+bottom_three <- tail(crimes_stats, 3)
+
+head(sum(crimes_stats$total_crimes), 5) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Total Crimes"),
+    align = c("c")
+  )
+# Display the results
+rbind(top_three, bottom_three) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Hood ID", "Neighbourhood", "Total Crimes"),
+    align = c("c", "c", "c")
+  )
+```
+
+
 
 ```{r}
 #| message: false
@@ -116,21 +204,136 @@ cleaned_crimes_data %>%
     y = "Number of Crimes Committed"
   ) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 90, size = 12),  # Adjust the font size of x-axis labels
+  theme(axis.text.x = element_text(angle = 90, size = 12),
+        axis.text.y = element_text(size = 20),
         plot.title = element_text(size = 35, hjust = 0.5),  # Adjust the title font size
         axis.title = element_text(size = 24))   # Adjust the axis title font size
+        
 ```
 
 ## Toronto Neighbourhood Profile Based on 2021 Census Data
 
+There are 158 neighbourhoods in the City of Toronto. Based 2021 census data, the average population per neighbourhood is 17476, with standard deviation of 6131. The neighbourhoods with the highest population are: West Humber-Clairville (Neighbourhood 1) at 33,300, Mount Olive-Silverstone-Jamestown (Neighbourhood 2) at 31,345, and St Lawrence-East Bayfront-The Islands (Neighbourhood 166) at 33,300. The neighbourhoods with the lowest population are: Beechborough-Greenbrook (Neighbourhood 112) at 6,260, University (Neighbourhood 79) at 6,435, and Blake-Jones (Neighbourhood 69) at 7,475.
+
+Average household income level per neighbourhood is \$125,263, with standard deviation of \$59,930. The neighbourhoods with the highest household income are: Bridle Path-Sunnybrook-York Mills (Neighbourhood 41) at \$519,500, Lawrence Park South (Neighbourhood 103) at \$365,600, and Rosedale-Moore Park (Neighbourhood 98) at \$334,000. The neighbourhoods with the lowest household income are: Oakridge (Neighbourhood 121) at \$72,200, North St.James Town (Neighbourhood 74) at \$74,100, and Black Creek (Neighbourhood 24) at \$74,700.
+
+
+
+```{r}
+#| include: false
+#| eval: false
+### Summary Statistics of Neighbourhood Population ###
+pop_stats <- cleaned_neighbourhood_data %>%
+  as_tibble() %>%
+  select(hood_id, population) %>%
+  summarize(
+    min = min(population),
+    max = max(population),
+    mean = mean(population),
+    std_dev = sd(population)) %>%
+  arrange(desc(mean))
+
+head(pop_stats, 5) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Minimum", "Maximum", "Mean", "Standard Deviation"),
+    align = c("c", "c", "c", "c")
+  )
+```
+
+```{r}
+#| include: false
+#| eval: false
+### Summary Statistics of Neighbourhood Populations ###
+population_stats <- cleaned_neighbourhood_data %>%
+  as_tibble() %>%
+  select(hood_id, population) %>%
+  group_by(hood_id) %>%
+  summarize(
+    total_population = sum(population)
+  ) %>%
+  arrange(desc(total_population))
+
+# Three neighbourhoods with the highest total population
+top_three_population <- head(population_stats, 3)
+
+# Three neighbourhoods with the lowest total population
+bottom_three_population <- tail(population_stats, 3)
+
+# Display the results
+rbind(top_three_population, bottom_three_population) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Hood ID", "Total Population"),
+    align = c("c", "c")
+  )
+
+```
+
+```{r}
+#| include: false
+#| eval: false
+### Summary Statistics of Neighbourhood Income ###
+income_stats <- cleaned_neighbourhood_data %>%
+  as_tibble() %>%
+  select(hood_id, income) %>%
+  summarize(
+    min = min(income),
+    max = max(income),
+    mean = mean(income),
+    std_dev = sd(income)) %>%
+  arrange(desc(mean))
+
+head(income_stats, 5) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Minimum", "Maximum", "Mean", "Standard Deviation"),
+    align = c("c", "c", "c", "c")
+  )
+```
+
+```{r}
+#| include: false
+#| eval: false
+### Summary Statistics of Neighbourhood Incomes ###
+income_stats <- cleaned_neighbourhood_data %>%
+  as_tibble() %>%
+  select(hood_id, income) %>%
+  group_by(hood_id) %>%
+  summarize(
+    total_income = sum(income)
+  ) %>%
+  arrange(desc(total_income))
+
+# Three neighbourhoods with the highest total income
+top_three_income <- head(income_stats, 3)
+
+# Three neighbourhoods with the lowest total income
+bottom_three_income <- tail(income_stats, 3)
+
+# Display the results
+rbind(top_three_income, bottom_three_income) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Hood ID", "Total Income"),
+    align = c("c", "c")
+  )
+
+```
+
+
 ## Relationship Between Crimes Committed and Neighbourhood Population
+
+The relationship between crimes committed and neighbourhood population in Toronto is explored in @fig-compare-crimes-population. The scatter plot visually represents this correlation, and a linear regression line indicates the direction of the relationship. The correlation coefficient between the number of crimes and population is approximately 0.564, suggesting a moderately positive correlation. This statistical measure quantifies the tendency for neighbourhoods with larger populations to experience higher crime rates. As an example, consider West Humber-Clairville (Neighbourhood 1), which has the highest population at 33,300. This neighbourhood also ranks second in the total number of crimes with 1175 incidents in 2020, supporting the positive correlation hypothesis. The summary statistics reveal that, on average, Toronto neighbourhoods with larger populations tend to have higher crime rates, contributing to a nuanced understanding of urban safety dynamics.
 
 ```{r}
 #| echo: false
 #| message: false
 #| warning: false
 #| label: fig-compare-crimes-population
-#| fig-cap: "Correlations between Number of Crimes and Population"
+#| fig-cap: "Correlation between Number of Crimes and Population"
+
+correlation_coefficient <- cor(final_neighbourhood_data$population, final_neighbourhood_data$number_of_crimes)
 
 final_neighbourhood_data |>
   ggplot(aes(x = population, y = number_of_crimes)) + 
@@ -140,21 +343,28 @@ final_neighbourhood_data |>
   labs(
     title = "Number of Crimes vs. Population for Toronto Neighbourhoods",
     x = "Population",
-    y = "Number of Crimes"
+    y = "Number of Crimes",
+    subtitle = paste("Correlation Coefficient:", round(correlation_coefficient, 3))
   ) +
   theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5)) 
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5, size = 8)  # Adjust the font size here
+  ) 
 
 ```
 
 ## Relationship Between Crimes Committed and Neighbourhood Income
 
+The statistical exploration of the relationship between crimes committed and neighbourhood income is depicted in @fig-compare-crimes-income. The scatter plot visualizes this association, while the linear regression line and a correlation coefficient of -0.217 indicate a weak negative correlation. This suggests that, on average, neighbourhoods with higher household incomes tend to have lower crime rates. The negative sign of the correlation coefficient underscores the inverse relationship between these variables. Bridle Path-Sunnybrook-York Mills (Neighbourhood 41), Lawrence Park South (Neighbourhood 103), and Rosedale-Moore Park (Neighbourhood 98) are examples of neighbourhoods with the highest household incomes, and they also exhibit relatively lower crime rates. In contrast, neighbourhoods with lower household incomes, such as Oakridge (Neighbourhood 121), North St. James Town (Neighbourhood 74), and Black Creek (Neighbourhood 24), tend to experience higher crime rates. While the correlation is statistically weak, the negative coefficient suggests that higher household incomes are associated with lower crime rates, and vice versa. 
 ```{r}
 #| echo: false
 #| message: false
 #| warning: false
 #| label: fig-compare-crimes-income
-#| fig-cap: "Correlations between Number of Crimes and Income"
+#| fig-cap: "Correlation between Number of Crimes and Income"
+
+correlation_coefficient_income <- cor(final_neighbourhood_data$income, final_neighbourhood_data$number_of_crimes)
 
 final_neighbourhood_data |>
   ggplot(aes(x = income, y = number_of_crimes)) + 
@@ -163,14 +373,19 @@ final_neighbourhood_data |>
   geom_smooth(method=lm, se=FALSE) + 
   labs(
     title = "Number of Crimes vs. Income for Toronto Neighbourhoods",
-    x = "Income",
-    y = "Number of Crimes"
+    x = "Income (CAD)",
+    y = "Number of Crimes",
+    subtitle = paste("Correlation Coefficient:", round(correlation_coefficient_income, 3))
   ) +
   theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5, size = 8)  # Adjust the font size here
+  ) +
   scale_x_continuous(labels = scales::comma_format()) 
 
 ```
+
 
 # Discussion {#sec-discussion}
 
